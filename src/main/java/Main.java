@@ -5,6 +5,7 @@ public class Main {
         System.out.println("Вас приветствует Международный аэропорт Сочи имени В. И. Севастьянова :) ");
         String nameAirport = "Международный аэропорт Сочи имени В. И. Севастьянова";
         Airport airport = new Airport(nameAirport);
+        System.out.println("Слу полёт: " + airport.createFlight());
         System.out.println("\nВыберите цифру одной из предложенных моделей самолётов -\n" +
                 "1) Boeing_777_300ER,\n" +
                 "2) Boeing_737_800,\n" +

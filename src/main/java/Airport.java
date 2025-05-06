@@ -55,8 +55,7 @@ public class Airport {
         int randomMinute = (int) (Math.random() * 60);
         LocalDate localDateNow = LocalDate.now();
         LocalDateTime timeDeparture = LocalDateTime.of(
-                localDateNow.getYear(), localDateNow.getMonth(), localDateNow.getDayOfMonth(),
-                randomHour, randomMinute);
+                localDateNow.getYear(), localDateNow.getMonth(), localDateNow.getDayOfMonth(), randomHour, randomMinute);
         LocalDateTime timeArrival = timeDeparture.plusHours(2);
         String[] randomNumbersFlights = {"SU-1177", "SU-2831", "SU-1133"};
         String randomNumberFlight = randomNumbersFlights[(int) (Math.random() * 3)];
@@ -64,12 +63,20 @@ public class Airport {
         String randomPlaceForArrival = randomPlacesForArrival[(int) (Math.random() * 3)];
         String[] randomStatuses = {"Регистрация", "Регистрация закончена", "Задержан"};
         String randomStatus = randomStatuses[(int) (Math.random() * 3)];
+        int randomSizeExit = 1 + (int) (Math.random() * 2);
+        Integer[] arrayExit = new Integer[randomSizeExit];
         int randomExit = 1 + (int) (Math.random() * 30);
+        if (randomSizeExit == 1) {
+            arrayExit[0] = randomExit;
+        } else if (randomSizeExit == 2) {
+            arrayExit[0] = randomExit;
+            arrayExit[1] = randomExit < 30 ? randomExit + 1 : randomExit - 1;
+        }
         Flight randomFlight = new Flight(
                 randomAircraft, typeFlight,
                 timeDeparture, timeArrival,
                 randomNumberFlight, randomPlaceForArrival,
-                randomStatus, randomExit
+                randomStatus, arrayExit
         );
         listFlights.add(randomFlight);
         return randomFlight;
@@ -161,39 +168,39 @@ public class Airport {
         return listFlightsDepartureInNextCountHours;
     }
 
-        public String getNameAirport () {
-            return nameAirport;
-        }
-
-        public List<Aircraft> getListAircraft () {
-            return listAircraft;
-        }
-
-        public List<LaneForAircraft> getListLanesForAircraft () {
-            return listLanesForAircraft;
-        }
-
-        public List<Flight> getListFlights () {
-            return listFlights;
-        }
-
-        public Map<String, Integer> getMapCountParkedAircraftByTerminalName () {
-            return mapCountParkedAircraftByTerminalName;
-        }
-
-        public Set<Flight> getSetSortedFlightsDeparture () {
-            return setSortedFlightsDeparture;
-        }
-
-        @Override
-        public String toString () {
-            return "Airport{" +
-                    "nameAirport='" + nameAirport + '\'' +
-                    ", listAircraft=" + listAircraft +
-                    ", listLanesForAircraft=" + listLanesForAircraft +
-                    ", listFlights=" + listFlights +
-                    ", mapCountParkedAircraftByTerminalName=" + mapCountParkedAircraftByTerminalName +
-                    ", setSortedFlightsDeparture=" + setSortedFlightsDeparture +
-                    '}';
-        }
+    public String getNameAirport() {
+        return nameAirport;
     }
+
+    public List<Aircraft> getListAircraft() {
+        return listAircraft;
+    }
+
+    public List<LaneForAircraft> getListLanesForAircraft() {
+        return listLanesForAircraft;
+    }
+
+    public List<Flight> getListFlights() {
+        return listFlights;
+    }
+
+    public Map<String, Integer> getMapCountParkedAircraftByTerminalName() {
+        return mapCountParkedAircraftByTerminalName;
+    }
+
+    public Set<Flight> getSetSortedFlightsDeparture() {
+        return setSortedFlightsDeparture;
+    }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "nameAirport='" + nameAirport + '\'' +
+                ", listAircraft=" + listAircraft +
+                ", listLanesForAircraft=" + listLanesForAircraft +
+                ", listFlights=" + listFlights +
+                ", mapCountParkedAircraftByTerminalName=" + mapCountParkedAircraftByTerminalName +
+                ", setSortedFlightsDeparture=" + setSortedFlightsDeparture +
+                '}';
+    }
+}

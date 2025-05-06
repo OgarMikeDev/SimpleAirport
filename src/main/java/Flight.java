@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Flight implements Comparable<Flight> {
@@ -9,13 +10,13 @@ public class Flight implements Comparable<Flight> {
     private String numberFlight; //TODO SU-1177
     private String placeForArrival; //TODO Москва/ШРМ
     private String status; //TODO регистрация
-    private int exit; //TODO 5
+    private Integer[] exit; //TODO 5
 
     public Flight(
             Aircraft aircraft, TypeFlight typeFlight,
             LocalDateTime timeDeparture, LocalDateTime timeArrival,
             String numberFlight, String placeForArrival,
-            String status, int exit) {
+            String status, Integer[] exit) {
         this.aircraft = aircraft;
         this.typeFlight = typeFlight;
         this.timeDeparture = timeDeparture;
@@ -30,64 +31,32 @@ public class Flight implements Comparable<Flight> {
         return aircraft;
     }
 
-    public void setAircraft(Aircraft aircraft) {
-        this.aircraft = aircraft;
-    }
-
     public TypeFlight getTypeFlight() {
         return typeFlight;
-    }
-
-    public void setTypeFlight(TypeFlight typeFlight) {
-        this.typeFlight = typeFlight;
     }
 
     public LocalDateTime getTimeDeparture() {
         return timeDeparture;
     }
 
-    public void setTimeDeparture(LocalDateTime timeDeparture) {
-        this.timeDeparture = timeDeparture;
-    }
-
     public LocalDateTime getTimeArrival() {
         return timeArrival;
-    }
-
-    public void setTimeArrival(LocalDateTime timeArrival) {
-        this.timeArrival = timeArrival;
     }
 
     public String getNumberFlight() {
         return numberFlight;
     }
 
-    public void setNumberFlight(String numberFlight) {
-        this.numberFlight = numberFlight;
-    }
-
     public String getPlaceForArrival() {
         return placeForArrival;
-    }
-
-    public void setPlaceForArrival(String placeForArrival) {
-        this.placeForArrival = placeForArrival;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getExit() {
+    public Integer[] getExit() {
         return exit;
-    }
-
-    public void setExit(int exit) {
-        this.exit = exit;
     }
 
     @Override
@@ -117,7 +86,7 @@ public class Flight implements Comparable<Flight> {
                 ",\nnumberFlight='" + numberFlight + '\'' +
                 ",\nplaceForArrival='" + placeForArrival + '\'' +
                 ",\nstatus='" + status + '\'' +
-                ",\nexit=" + exit +
+                ",\nexit=" + Arrays.toString(exit) +
                 '}';
     }
 
