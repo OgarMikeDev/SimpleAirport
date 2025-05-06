@@ -66,10 +66,8 @@ public class Airport {
         int randomSizeExit = 1 + (int) (Math.random() * 2);
         Integer[] arrayExit = new Integer[randomSizeExit];
         int randomExit = 1 + (int) (Math.random() * 30);
-        if (randomSizeExit == 1) {
-            arrayExit[0] = randomExit;
-        } else if (randomSizeExit == 2) {
-            arrayExit[0] = randomExit;
+        arrayExit[0] = randomExit;
+        if (randomSizeExit == 2) {
             arrayExit[1] = randomExit < 30 ? randomExit + 1 : randomExit - 1;
         }
         Flight randomFlight = new Flight(
